@@ -44,18 +44,14 @@
       <hr>
     </div>
 
-      <!-- 入力データ表示 データベースに変更-->
+      <!-- 入力データ表示 -->
     <div>
-      <?php if (!empty($rows_reverse)): ?>
-        <?php foreach ($rows_reverse as $row): ?>
-
-          <p><?php echo $row['id'] ?></p>
-          <h3><?php echo $row['title'] ?></h3>
-          <p><?php echo $row['text'] ?></p>
-          <a href="message.php?id=<?php echo $row['id'] ?>">全文・コメントを見る</a>
-          <hr>
-        <?php endforeach; ?>
-      <?php endif; ?>
+      @foreach($articles as $article)
+        <h3>{{$article->id}}. {{$article->title}}</h3>
+        <p>{{$article->text}}</p>
+      <a href="#">全文表示・コメントする</a>
+      <hr>
+      @endforeach
     </div>
 
     <script src="script.js"></script>
