@@ -13,4 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', "ArticleController@index");
+//localhost:8888に接続するとArticleControllerのindexアクションを実行する
+Route::get('/', 'ArticleController@index');
+Route::post('/store', 'ArticleController@store');
+
+//localhost:8888/commentに接続するとArticleControllerのcommentアクションを実行する
+Route::get('/comment', 'ArticleController@comment');
+
+
+
+
