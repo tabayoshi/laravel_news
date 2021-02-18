@@ -25,7 +25,10 @@
             </form>
         </section>
         <section>
-           
+           @foreach($comments as $comment)
+                <h3>{{$comment->id}}. {{$comment->title}}</h3>
+                <p>{{$comment->text}}</p>
+            @endforeach
         </section>
         
 </html>
