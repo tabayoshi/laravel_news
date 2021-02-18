@@ -13,7 +13,7 @@
         <h2>さぁ、最新のニュースをシェアしましょう</h2>  
         
         <!-- フォーム入力 データベースへの書き込みに変更-->
-        <form method="post" action="/">
+        <form method="post" action="article.store"> //rout::article.store
             {{ csrf_field() }} <!-- CSRF対策(書かないと正しく動作しない) -->
           <div class="title">
             <label class="label_title">タイトル：</label>

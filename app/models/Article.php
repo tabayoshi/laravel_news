@@ -18,4 +18,7 @@ class Article extends Model
     {
         return $this->hasMany('app\models\Comment');
     }
+
+// -------------------------------------------------------
+
 }
