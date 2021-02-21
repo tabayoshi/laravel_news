@@ -6,12 +6,12 @@ use App\models\Article;
 use Illuminate\Http\Request; //クラスのインポート(Illuminate\Http内のRequestを使える状態にする)
 
 class ArticleController extends Controller {
-//articleページ表示 -----------------------------------------
+//投稿記事表示 -----------------------------------------
   public function index(Request $request) {
     $articles = Article::all();
     return view('index', ['articles' => $articles]);
   }
-  // データベースへの書き込み ---------------------------------
+  // コメント投稿 --------------------------------
   public function store(Request $request) {
     $article = new Article;
     $article->title = $request->title;

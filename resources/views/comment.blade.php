@@ -14,7 +14,7 @@
         </seciton>
         <hr>
         <section>
-            <form method="post" action="/comment">
+            <form method="post" action="./comment?id={{$article->id}}">
                 {{ csrf_field() }} <!-- CSRF対策(書かないと正しく動作しない) -->
                 <div class="comment">
                     <label class="label_text">コメント：</label>
@@ -25,14 +25,14 @@
             </form>
             <hr>
         </section>
-        <form method="post" action="/commnet">
            @foreach($comments as $comment)
                 <!-- <p>{{$comment->article_id}}</p> -->
                 <p>{{$comment->id}}. {{$comment->comment}}</p>
-                
-                <input type="submit" name="delete" value="コメントを削除">
+        <form method="post" action="./comment?id={{$article->id}}">
+            {{ csrf_field() }} 
+            <input type="submit" name="delete" value="コメントを削除">
+        </form>
                 <hr>
             @endforeach
-        </form>
         
 </html>

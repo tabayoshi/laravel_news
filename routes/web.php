@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,5 @@ Route::post('/', 'ArticleController@store');
 
 //Comment -------------------------------------------
 Route::get('/comment', 'CommentController@comment');
-Route::post('/comment/{id}', 'CommentController@store');
+Route::post('/comment', 'CommentController@store');
 // Route::get('/comment', 'CommentController@delete');

@@ -20,17 +20,20 @@ class CommentController extends Controller
     }
     // コメント投稿 ----------------------------------------
     public function store(Request $request) {
+        // $param = ['id' => $request->id];
         $comment = new Comment;
+        $comment->article_id = $request->article_id;
+        $comment->id = $request->id;
         $comment->comment = $request->comment;
         $comment->save();
-        return redirect('/comment');
+        return redirect('/comment?id={$request->article_id}');
     }
     // コメント削除 ----------------------------------------
     public function delete(Request $request) {
-        $param = ['id' => $request->id];
+        $param = ['id' => $request->article_id];
         $comment = new Comment;
         $comment = Comment::where('id', $param)->delete();
-        return redirect('/comment');
+        return redirect('/comment?id={$request->article_id}');
     }
 
 }
