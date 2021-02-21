@@ -18,7 +18,7 @@ class CreateCommentsTable extends Migration
             $table->integer('article_id');
             $table->text('comment');
             $table->timestamps();
-            $table->foreign('article_id')->references('id')->on('articles');
+            // $table->foreign('article_id')->references('id')->on('articles');
         });
     }
 
