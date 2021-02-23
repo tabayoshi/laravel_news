@@ -14,25 +14,25 @@
         </seciton>
         <hr>
         <section>
-            <form method="post" action="./comment?id={{$article->id}}">
+            <form method="POST" action="">
                 {{ csrf_field() }} <!-- CSRF対策(書かないと正しく動作しない) -->
                 <div class="comment">
                     <label class="label_text">コメント：</label>
                     <textarea name="comment" cols="30" rows="5" value=""></textarea>
                 </div><!-- .text -->
-            
                 <input type="submit" name="submit" value="投稿">
             </form>
             <hr>
         </section>
            @foreach($comments as $comment)
-                <!-- <p>{{$comment->article_id}}</p> -->
+                <p>{{$comment->article_id}}</p>
                 <p>{{$comment->id}}. {{$comment->comment}}</p>
-        <form method="post" action="./comment?id={{$article->id}}">
-            {{ csrf_field() }} 
-            <input type="submit" name="delete" value="コメントを削除">
-        </form>
-                <hr>
+            <form method="post" action="./comment">
+                {{ csrf_field() }} 
+                <input type="hidden" name="article_id" value="{{$article->id}}">
+                <input type="submit" name="delete" value="コメントを削除">
+            </form>
+            <hr>
             @endforeach
-        
+            <a href="http://localhost:8888/public/">戻る</a>
 </html>

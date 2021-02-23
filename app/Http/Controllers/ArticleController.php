@@ -11,12 +11,13 @@ class ArticleController extends Controller {
     $articles = Article::all();
     return view('index', ['articles' => $articles]);
   }
-  // コメント投稿 --------------------------------
+  // 記事投稿 --------------------------------
   public function store(Request $request) {
     $article = new Article;
     $article->title = $request->title;
     $article->text = $request->text;
     $article->save();
-    return redirect('/');
+    // dd($article);
+    return redirect()->back();
   }
 }

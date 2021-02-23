@@ -21,4 +21,5 @@ Route::post('/', 'ArticleController@store');
 //Comment -------------------------------------------
 Route::get('/comment', 'CommentController@comment');
 Route::post('/comment', 'CommentController@store');
-// Route::get('/comment', 'CommentController@delete');
+Route::delete('/comment', 'CommentController@delete');
+

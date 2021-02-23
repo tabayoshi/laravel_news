@@ -8,13 +8,15 @@ class Comment extends Model
 {
     //テーブル名
     protected $table = 'comments';
+
+    protected $guraded = array('id');
     //可変項目
     protected $fillable = [
-        'id', //0
-        'comment',  //1
+        'article_id',
+        'comment',
     ];
 //モデルを引き継いだCommentというクラスを使えば、commentsというテーブルの中の'commentというカラムを使える
-    public function articles() {
-        return $this->belongsTo('app\models\Article');
+    public function article() {
+        return $this->belongsTo('app\models\Article', 'article_id', 'id');
     }
 }
