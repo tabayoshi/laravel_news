@@ -8,10 +8,10 @@ class Comment extends Model
 {
     //テーブル名
     protected $table = 'comments';
-
-    protected $guraded = array('id');
+    protected $primaryKey = 'id';
     //可変項目
     protected $fillable = [
+        'id',
         'article_id',
         'comment',
     ];

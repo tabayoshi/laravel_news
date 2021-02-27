@@ -11,10 +11,19 @@
 
       <section>
         <h2>さぁ、最新のニュースをシェアしましょう</h2>  
-        
+        <!-- バリデーション -->
+
         <!-- フォーム入力 データベースへの書き込みに変更-->
         <form method="post" action="./">
             {{ csrf_field() }} <!-- CSRF対策(書かないと正しく動作しない) -->
+            <div>
+              @if ($errors->has('title'))
+                  <p>{{$errors->first('title')}}<br>
+              @endif
+              @if ($errors->has('text'))
+                  <p>{{$errors->first('text')}}</p>
+              @endif
+            </div>
           <div class="title">
             <label class="label_title">タイトル：</label>
             <input type="text" class="title" name="title" cols="50" value="">

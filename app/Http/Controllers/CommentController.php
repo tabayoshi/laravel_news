@@ -20,6 +20,19 @@ class CommentController extends Controller
     }
     // コメント投稿 ----------------------------------------
     public function store(Request $request) {
+        // バリデーション ------------------------
+        $this->validate(
+            $request,
+            [
+                'comment'    => 'required|string|max:50',
+            ],
+            [
+                'comment.required'    => 'コメントは必須です。',
+                'comment.max'         => 'コメントは50文字以下です。',
+            ]
+
+        );
+        // ---------------------------------------
         $comment = new Comment;
         $comment->article_id = $request->id;
         $comment->comment = $request->comment;
@@ -28,13 +41,10 @@ class CommentController extends Controller
         return redirect()->back();
     }
     // コメント削除 ----------------------------------------
-    public function delete(Request $request) {
-        $param = ['id' => $request->id];
-        // $comment = new Comment;
-        // $comment = Comment::where('id', $param)->delete();
-        $comments = Comment::where('id', $param)->get();
-        $comments->delete();
-        return redirect()->back();
-    }
-
+    // public function destroy(Request $request) {
+    //     $comment->destroy();
+    //     return redirect("/comment?id={{ $comment->id }}");
+    //     $comment = Comment::find();
+    //     $comment->delete();
+    // }
 }
