@@ -41,10 +41,8 @@ class CommentController extends Controller
         return redirect()->back();
     }
     // コメント削除 ----------------------------------------
-    // public function destroy(Request $request) {
-    //     $comment->destroy();
-    //     return redirect("/comment?id={{ $comment->id }}");
-    //     $comment = Comment::find();
-    //     $comment->delete();
-    // }
+    public function destroy(Comment $comment) {
+        $comment->delete();
+        return redirect()->back();
+    }
 }

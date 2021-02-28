@@ -9,7 +9,9 @@ use Illuminate\Validation\Validator;
 class ArticleController extends Controller {
 //投稿記事表示 -----------------------------------------
   public function index(Request $request) {
-    $articles = Article::all();
+    // $articles = Article::all();
+    $sort = $request->sort;
+    $articles = Article::paginate(5);
     return view('index', ['articles' => $articles]);
   }
   // 記事投稿 --------------------------------
