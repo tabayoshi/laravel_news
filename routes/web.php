@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,13 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//localhost:8888に接続するとArticleControllerのindexアクションを実行する
+//Article -------------------------------------------
 Route::get('/', 'ArticleController@index');
-// Route::post('/store', 'ArticleController@store');
+Route::post('/', 'ArticleController@store');
 
-//localhost:8888/commentに接続するとArticleControllerのcommentアクションを実行する
-Route::get('/comment', 'ArticleController@comment');
-
-
+//Comment -------------------------------------------
+Route::get('/comment', 'CommentController@comment');
+// Route::post('/comment', 'CommentController@store');
+// Route::post('/comment', 'CommentController@delete');
+// Route::get('/comment/{id}', 'CommentController@destroy');
+Route::resource('comment', 'CommentController')->only([
+    'store',
+    'destroy',
+]);
 
 
