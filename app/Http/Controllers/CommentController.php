@@ -9,7 +9,8 @@ use App\models\Article;
 class CommentController extends Controller
 {
 //投稿記事表示 -----------------------------------------
-    public function comment(Request $request) { 
+    public function comment(Request $request) {  
+        //ぺジネーション -----------------------------------------
         $param = ['id' => $request->id];
         $articles = Article::where('id',$param)->get();
         // dd($articles);
@@ -41,8 +42,10 @@ class CommentController extends Controller
         return redirect()->back();
     }
     // コメント削除 ----------------------------------------
-    public function destroy(Comment $comment) {
-        $comment->delete();
+    public function destroy($id) {
+    // dd($id);
+        Comment::destroy($id);
+
         return redirect()->back();
     }
 }

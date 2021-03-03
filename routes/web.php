@@ -20,12 +20,7 @@ Route::post('/', 'ArticleController@store');
 
 //Comment -------------------------------------------
 Route::get('/comment', 'CommentController@comment');
-// Route::post('/comment', 'CommentController@store');
-// Route::post('/comment', 'CommentController@delete');
-// Route::get('/comment/{id}', 'CommentController@destroy');
-Route::resource('comment', 'CommentController')->only([
-    'store',
-    'destroy',
-]);
+Route::post('/comment', 'CommentController@store');
+Route::delete('/comment/{id}', 'CommentController@destroy')->name('delete');
 
 
